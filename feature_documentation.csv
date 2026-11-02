@@ -1,0 +1,12 @@
+feature,logic,business_purpose,justification,interpretation
+age_group,age cut at 30/40/50/60,Target younger and older customers differently,"Age has near-zero linear correlation with deposit (0.04) but a U-shaped response (60% under 30, 41-44% for 30-59, 77% for 60+). A band captures what a straight-line measure misses.",Under-30 and 60+ are the responsive ages.
+balance_tier,"balance: <0, 0-500, 500-2,000, 2,000+",Gauge financial capacity at a glance,Raw balance is extremely skewed (8.3); tiers give stable groups and an easy rule for call lists.,Higher tier -> higher response.
+balance_log,sign(balance) * log(1 + |balance|),Make balance usable in correlations and averages,Reduces skew so a few large accounts do not dominate statistics.,Compare balances on a ratio-like scale.
+debt_status,housing / personal loan combination,Summarise debt burden in one field,Two yes/no columns carry one idea (debt load); response falls from 59.6% (no loans) to 31.7% (both).,Any loan lowers response; both lowest.
+contact_frequency_band,campaign cut at 1/2/3/4-5/6+,Set a contact-limit policy,Response drops from 53% (1 call) to 29% (6+); bands show where returns fade.,Diminishing returns after about 3 calls.
+previously_contacted,pdays > -1,Separate existing from brand-new relationships,"pdays = -1 is a code, not a number; averaging it is meaningless. A flag uses it correctly.",Yes = warmer lead.
+previous_success,poutcome == success,Isolate the warmest leads,91% of previous successes subscribe again; the flag makes the group easy to extract.,Yes = call first.
+contact_channel_known,contact != unknown,Flag records with missing channel information,Unknown-channel customers respond at 24% vs 54% cellular; the gap may be a data-capture issue.,No = data-quality / weak-lead flag.
+quarter,month -> Q1..Q4,Plan campaign timing in seasons,Months are noisy and uneven; quarters give larger groups.,Season-level planning.
+day_period,day -> early/mid/late month,Test pay-cycle timing,"Customers may be more receptive near pay-days; included to test, evaluated honestly in section 6.",To be judged by evidence.
+call_duration_band,duration cut at 2/5/10 min,Describe call quality after the call,"Strongest single signal (9% under 2 min vs 85% over 10) but known only AFTER the call, so NOT usable for choosing whom to call.",Post-call diagnostic only.
